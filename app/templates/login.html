@@ -1,0 +1,110 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block 'content' %}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Products</a></li>
+            <li class="breadcrumb-item active">Login & Register</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Login Start -->
+<div class="login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">    
+                <div class="register-form">
+                    <h2>Register</h2>
+                    
+                            <form action="{% url 'register' %}" method="POST">
+
+                                {% csrf_token %}
+                              
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>First Name</label>
+                                        {{ form.first_name }}
+                                        
+                            <!-- <input class="form-control" type="text" placeholder="First Name"> -->
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <label>Last Name</label>
+                            {{ form.last_name }}
+                            <!-- <input class="form-control" type="text" placeholder="Last Name"> -->
+                        </div>
+                        <div class="col-md-6">
+                            <label>Username</label><br>
+                            {{ form.username }}
+
+                            <!-- <input class="form-control" type="text" placeholder="E-mail"> -->
+                        </div>
+                         <div class="col-md-6">
+                            <label>Email</label>
+                            {{ form.email }}
+
+                            <!-- <input class="form-control" type="text" placeholder="Mobile No"> -->
+                        </div> 
+                        <div class="col-md-6">
+                            <label>Password</label>
+                            {{ form.password1 }}
+
+                            <!-- <input class="form-control" type="text" placeholder="Password"> -->
+                        </div>
+                        <div class="col-md-6">
+                            <label>Confirm Password</label>
+                            {{ form.password2 }}
+
+                            <!-- <input class="form-control" type="text" placeholder="Password"> -->
+                        </div>
+                        
+                        
+                        <div class="col-md-12">
+                            <br>
+                            <button class="btn">Submit</button>
+                        
+                        </div>
+                    </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <form action="{% url 'login' %}" method ="POST" >
+                        {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                            <input class="form-control" type="text" placeholder="Email" name="email">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Password</label>
+                            <input class="form-control" type="text" placeholder="Password" name="password">
+                        </div>
+                        <div class="col-md-12">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="newaccount">
+                                <label class="custom-control-label" for="newaccount">Keep me signed in</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="btn">Submit</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Login End -->
+{% endblock %}

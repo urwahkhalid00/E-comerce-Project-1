@@ -1,0 +1,112 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block 'content' %}
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Products</a></li>
+                    <li class="breadcrumb-item active">Checkout</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Checkout Start -->
+        <div class="checkout">
+            <div class="container-fluid"> 
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="checkout-inner">
+                            <div class="billing-address">
+                                <h2>Billing Address</h2>
+                                <form action=" {% url 'checkout' %} " method="POST" >
+
+                                    {% csrf_token %}
+                                <div class="row">
+                                    
+
+                                     <div class="col-md-6">
+                                                <label>First Name</label>
+                                                {{ form.first_name }}
+        
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label>Last Name"</label>
+                                        {{ form.last_name }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>E-mail</label>
+                                        {{ form.email }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Phone No</label>
+                                        {{ form.phone }}
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Address</label>
+                                        {{ form.address }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Country</label>
+                                        {{ form.country }}
+                                        <!-- <select class="custom-select">
+                                            
+                                            <option selected>Pakistan</option>
+                                            <option>Afghanistan</option>
+                                            <option>Albania</option>
+                                            <option>Algeria</option>
+                                            <option>US</option>
+
+                                        </select> -->
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>City</label>
+                                        {{ form.city }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>State</label>
+                                        {{ form.state }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>ZIP Code</label>
+                                        {{ form.zip_code }}
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <label>Shipping Order</label>
+                                         <!-- <textarea class="form-control" id="form-control" placeholder="Notes about your order, Special Notes for Delivery" rows="10" ></textarea> -->
+                                         {{ form.note }}
+                                        
+                                        </div>
+                                        <div class="checkout-payment">
+                                            <div class="checkout-btn">
+                                                <button class="btn btn-default check_out">Place Order</button>
+                                            </div>
+                                        </div>
+            
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="checkout-inner">
+                            <div class="checkout-summary">
+                                <h1>Cart Total</h1>
+                                <p>Sub Total<span>Rs {{ total }}</span></p>
+                                        <p>Tax<span>Rs {{ tax }}</span></p>
+                                        <p>Shipping Cost<span>Rs {{ shipping_charges }}</span></p>
+                                        <h2>Grand Total<span>Rs {{ grand_total }}</span></h2>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

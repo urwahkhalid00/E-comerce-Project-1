@@ -1,0 +1,205 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block 'content' %}
+
+        <!-- Breadcrumb Start -->
+    <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Products</a></li>
+                    <li class="breadcrumb-item active">Product Detail</li>
+                </ul>
+            </div>
+    </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Product Detail Start -->
+    <div class="product_detail">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="product_detail-top">
+                            <div class="row align-items-center">
+                                <div class="col-md-5">
+                                    <div class="product-slider-single normal-slider">
+                                        <img src="{{ product.image.url }}" alt="Product Image">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="product-content">
+                                        <div class="title"><h2>{{ product.title }}</h2></div>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <form action=" {% url 'add_to_cart' %} " method="POST">
+                                         {% csrf_token %}
+                                         <input type="hidden" name="product_id" value="{{ product.id }}">
+                                        <div class="price">
+                                            <h4>Price:</h4>
+                                            <p>Rs <span>{{ product.price}}</span></p>
+                                        </div>
+
+                                        
+                                        <div class="quantity">
+                                            <h4>Quantity:</h4>
+                                            <div class="qty">
+                                                <button class="btn-minus" type="button"><i class="fa fa-minus"></i></button>
+                                                <input class="cart_quantity_input" id="cart_quantity_input" type="text" name="quantity" value="1"  size="2">
+                                                <!-- <input type="text" value="1"> -->
+                                                <button class="btn-plus" type="button"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        
+                                        <br>
+                                        
+                                        <div class="action">
+                                            <button class="btn"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                                        <a class="btn" href="{% url 'checkout' %}"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                            
+                                            
+                                        </div>
+                                        </form>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row product_detail-bottom">
+                            <div class="col-lg-12">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="pill" href="#description">Description</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="pill" href="#specification">Specification</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="pill" href="#reviews">Reviews (1)</a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div id="description" class="container tab-pane active">
+                                        <h4>Product description</h4>
+                                        <p>
+                                            "Rejuvenate your skin with our nourishing moisturizer, infused with natural ingredients to hydrate and soften your skin. Perfect for all skin types, our formula helps to lock in moisture and reduce the appearance of fine lines and wrinkles."
+                                            <br>
+                                            "Say goodbye to dull, dry skin with our exfoliating facial scrub. Gentle enough for daily use, our scrub combines natural exfoliants with soothing aloe vera to leave your skin feeling smooth, refreshed, and radiant."
+                                        </p>
+                                    </div>
+                                    <div id="specification" class="container tab-pane fade">
+                                        <h4>Product specification</h4>
+                                        <ul>
+                                            <li>Moisturizer: 50ml / 1.7fl oz, Hyaluronic Acid 10%, Glycerin 5%, Vitamin E 2%, Aloe Vera Extract 1%, non-greasy and lightweight texture.</li>
+                                            <li>Exfoliating Facial Scrub: 100g / 3.5oz, Walnut Shell Powder 20%, Sugar 15%, Aloe Vera Extract 5%, Tea Tree Oil 2%, gentle enough for daily use.</li>
+                                            <li>Brightening Serum: 30ml / 1fl oz, Niacinamide 5%, Vitamin C 10%, Licorice Extract 2%, Ferulic Acid 1%, fast-absorbing and lightweight texture.</li>
+                                        </ul>
+                                    </div>
+                                    <div id="reviews" class="container tab-pane fade">
+                                        <div class="reviews-submitted">
+                                            <div class="reviewer">David R - <span>01 Jan 2023</span></div>
+                                            <div class="ratting">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <p>
+                                                "The brand's commitment to natural ingredients is commendable."
+                                            </p>
+                                        </div>
+                                        <div class="reviews-submit">
+                                            <h4>Give your Review:</h4>
+                                            <div class="ratting">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="row form">
+                                                <div class="col-sm-6">
+                                                    <input type="text" placeholder="Name">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="email" placeholder="Email">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <textarea placeholder="Review"></textarea>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <button>Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Side Bar Start -->
+                    <div class="col-lg-4 sidebar">
+                        <div class="sidebar-widget category">
+                            <h2 class="title">Category</h2>
+                            <nav class="navbar bg-light">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-tint"></i>Skin Care</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-spray-can"></i>Hair Care</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa fa-child"></i>Body Care</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa fa-gifts"></i>Gifts and Sales</a>
+                                    </li>
+                                    
+                                </ul>
+                            </nav>
+                        </div>
+                        
+                        
+                        
+                        <div class="sidebar-widget brands">
+                            <h2 class="title">Our Brands</h2>
+                            <ul>
+                                <li><a href="#">Neutrogena </a><span>(45)</span></li>
+                                <li><a href="#">Ordinary </a><span>(34)</span></li>
+                                <li><a href="#">Curology</a><span>(67)</span></li>
+                                <li><a href="#">Vilvah</a><span>(74)</span></li>
+                                <li><a href="#">Huda Beauty </a><span>(89)</span></li>
+                                <li><a href="#">Crystolite</a><span>(28)</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Side Bar End -->
+                </div>
+            </div>
+    </div>
+        <!-- Product Detail End -->
+        
+        <!-- Brand Start -->
+        <div class="brand">
+            <div class="container-fluid">
+                <div class="brand-slider">
+                    <div class="brand-item"><img src="{% static 'img/neutrogena.jpg' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/ordinary.jpg' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/curology.jpg' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/vilvah.jpg' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/huda.jpg' %}" alt=""></div>
+                    <div class="brand-item"><img src="{% static 'img/crystolite.jpg' %}" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand End -->
+{% endblock %}

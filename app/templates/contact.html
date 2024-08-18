@@ -1,0 +1,72 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block 'content' %}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'product_list' %}">Products</a></li>
+            <li class="breadcrumb-item active">Contact</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb  -->
+
+<!-- Contact Start -->
+<div class="contact">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-info">
+                    <h2>Our Office</h2>
+                    <h3><i class="fa fa-map-marker"></i>Iconic Office, Ali town, Lahore</h3>
+                    <h3><i class="fa fa-envelope"></i>iconicoffice@gmail.com</h3>
+                    <h3><i class="fa fa-phone"></i>+123-456-7890</h3>
+                    <div class="social">
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn" type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-info">
+                    <h2>Our Store</h2>
+                    <h3><i class="fa fa-map-marker"></i>Icconic Store, Ichra, Lahore</h3>
+                    <h3><i class="fa fa-envelope"></i>iconcistore@gmail.com</h3>
+                    <h3><i class="fa fa-phone"></i>+123-456-7890</h3>
+                    <div class="social">
+                        <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13602.742025450822!2d74.30804699323534!3d31.532796576712105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919049bf02720f9%3A0x4295a66061acf664!2sIchhra%20Lahore%2C%20Punjab%2054000%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1722179618999!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+{% endblock %}
