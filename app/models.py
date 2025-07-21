@@ -63,3 +63,5 @@ class Order(models.Model):
     user = models.ManyToManyField(User, null=True, blank=True)
     order_price = models.DecimalField( max_digits=8,decimal_places=2, null=True, blank=True) 
         
+    def __str__(self):
+        return f"{self.first_name} - {self.email} - {self.country}"

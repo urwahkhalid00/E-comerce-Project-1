@@ -196,3 +196,13 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
+
+
+# def add_to_cart(request, product_id):
+#     cart = request.session.get('cart', {})
+#     cart[str(product_id)] = cart.get(str(product_id), 0) + 1
+#     request.session['cart'] = cart
+
+#     print("Cart now contains:", request.session['cart'])  # ✅ Safe to use here
+
+#     return redirect('cart')

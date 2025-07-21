@@ -17,4 +17,5 @@ urlpatterns = [
     path('register/', views.register ,name='register'),
     path('logout/', views.user_logout ,name='logout'),
     path('contact/', views.contact, name='contact'),  
+    # path('cart/add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
 ]

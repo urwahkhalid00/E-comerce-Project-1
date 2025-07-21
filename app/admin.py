@@ -22,6 +22,9 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'message')
     search_fields = ('name', 'email')
     
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('first_name','email','country', 'order_price')
+        
     
 
 admin.site.register(Category, CategoryAdmin)
@@ -29,6 +32,6 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Brand, BrandAdmin)
 admin.site.register(Cart,CartAdmin)
 admin.site.register(Contact, ContactAdmin) 
-admin.site.register(Order)  
+admin.site.register(Order,OrderAdmin )  
 
 
