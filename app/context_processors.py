@@ -1,7 +1,10 @@
-# yourapp/context_processors.py
+from .models import Cart
 
-# def cart_item_count(request):
-#     cart = request.session.get('cart', {})
-#     print("🛒 cart_item_count context processor called. Cart:", cart)
-#     total_items = sum(cart.values())
-#     return {'cart_item_count': total_items}
+def cart_item_count(request):
+    if request.user.is_authenticated:
+        cart_items = Cart.objects.filter(user=request.user.id)
+        total_quantity = sum(item.qty for item in cart_items)
+    else:
+        total_quantity = 0
+
+    return {'cart_item_count': total_quantity}
